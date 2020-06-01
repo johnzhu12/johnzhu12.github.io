@@ -989,7 +989,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1.1" data-path="../../normal/Array&String/最长回文子串.html">
+        <li class="chapter " data-level="2.1.1.1" data-path="../../normal/Array&String/三数之和.html">
+            
+                <a href="../../normal/Array&String/三数之和.html">
+            
+                    
+                    三数之和
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="../../normal/Array&String/最长回文子串.html">
             
                 <a href="../../normal/Array&String/最长回文子串.html">
             
@@ -1090,6 +1103,81 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x548C;"><a href="https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/23/dynamic-programming/56/" target="_blank">&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x548C;</a></h1>
+<p><img src="imgs/maxSubArray.png" alt="maxSubArray"></p>
+<h2 id="&#x601D;&#x8DEF;">&#x601D;&#x8DEF;</h2>
+<h3 id="1-&#x66B4;&#x529B;&#x679A;&#x4E3E;">1. &#x66B4;&#x529B;&#x679A;&#x4E3E;</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> maxSubArray = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">var</span> sum = -<span class="hljs-literal">Infinity</span>;
+    <span class="hljs-keyword">var</span> len = nums.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>; start &lt; len; start++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> end = start + <span class="hljs-number">1</span>; end &lt; len; end++) {
+            <span class="hljs-keyword">var</span> temp = nums.slice(start, end);
+            <span class="hljs-keyword">var</span> ans = temp.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prev, curr</span>) </span>{
+                <span class="hljs-keyword">return</span> prev + curr;
+            });
+            <span class="hljs-keyword">if</span> (sum &lt; ans) {
+                sum = ans;
+            }
+
+        }
+    }
+    <span class="hljs-keyword">return</span> sum
+};
+</code></pre>
+<p>&#x4F18;&#x5316;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> maxSubArray = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">var</span> sum = -<span class="hljs-literal">Infinity</span>;
+    <span class="hljs-keyword">var</span> len = nums.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>; start &lt; len; start++) {
+        <span class="hljs-keyword">var</span> ans = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> end = start; end &lt; len; end++) {
+
+            ans = ans + nums[end];
+            <span class="hljs-keyword">if</span> (sum &lt; ans) {
+                sum = ans;
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> sum
+};
+</code></pre>
+<h3 id="2-&#x8D2A;&#x5FC3;&#x7B97;&#x6CD5;">2. &#x8D2A;&#x5FC3;&#x7B97;&#x6CD5;</h3>
+<pre><code>* &#x82E5;&#x5F53;&#x524D;&#x6307;&#x9488;&#x6240;&#x6307;&#x5143;&#x7D20;&#x4E4B;&#x524D;&#x7684;&#x548C;&#x5C0F;&#x4E8E;0&#xFF0C;&#x5219;&#x4E22;&#x5F03;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x4E4B;&#x524D;&#x7684;&#x6570;&#x5217;
+</code></pre><pre><code class="lang-js"><span class="hljs-keyword">var</span> maxSubArray = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">var</span> len = nums.length;
+    <span class="hljs-keyword">var</span> cur_sum = nums[<span class="hljs-number">0</span>], max_sum = nums[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) {
+        cur_sum = <span class="hljs-built_in">Math</span>.max(nums[i], cur_sum + nums[i]); <span class="hljs-comment">//&#x82E5;&#x5F53;&#x524D;&#x6307;&#x9488;&#x6240;&#x6307;&#x5143;&#x7D20;&#x4E4B;&#x524D;&#x7684;&#x548C;&#x5C0F;&#x4E8E;0&#xFF0C;&#x5219;&#x4E22;&#x5F03;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x4E4B;&#x524D;&#x7684;&#x6570;&#x5217;</span>
+        max_sum = <span class="hljs-built_in">Math</span>.max(cur_sum, max_sum)
+    }
+    <span class="hljs-keyword">return</span> max_sum;
+}
+</code></pre>
+<h3 id="3-&#x52A8;&#x6001;&#x89C4;&#x5212;">3. &#x52A8;&#x6001;&#x89C4;&#x5212;</h3>
+<pre><code>* &#x82E5;&#x524D;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5927;&#x4E8E;0&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x52A0;&#x5230;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x4E0A;
+</code></pre><pre><code class="lang-js"><span class="hljs-keyword">var</span> maxSubArray = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">let</span> len = nums.length
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>;i&lt;len;i++){
+        <span class="hljs-keyword">if</span>(nums[i<span class="hljs-number">-1</span>]&gt;<span class="hljs-number">0</span>){
+            nums[i]+=nums[i<span class="hljs-number">-1</span>]
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...nums)
+};
+</code></pre>
+<p><img src="imgs/solution/maxSubArrayDP.png" alt="maxSubArrayDP"></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> maxSubArray = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">let</span> pre = <span class="hljs-number">0</span>, maxAns = nums[<span class="hljs-number">0</span>];
+    nums.forEach((x) =&gt; {
+        pre = <span class="hljs-built_in">Math</span>.max(pre + x, x);
+        maxAns = <span class="hljs-built_in">Math</span>.max(maxAns, pre);
+    });
+    <span class="hljs-keyword">return</span> maxAns;
+};
+</code></pre>
+<h3 id="4-&#x5206;&#x6CBB;">4. &#x5206;&#x6CBB;</h3>
+<p><a href="https://leetcode-cn.com/problems/maximum-subarray/solution/zui-da-zi-xu-he-by-leetcode-solution/" target="_blank">&#x9898;&#x89E3;</a></p>
+<p>&#x7E41;&#x7410; &#xFFE3;&#x25A1;&#xFFE3;&#xFF5C;&#xFF5C;</p>
 
                                 
                                 </section>
@@ -1133,7 +1221,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"最大子序和","level":"1.2.6.3","depth":3,"next":{"title":"打家劫舍","level":"1.2.6.4","depth":3,"path":"easy/DP/打家劫舍.md","ref":"./easy/DP/打家劫舍.md","articles":[]},"previous":{"title":"买卖股票的最佳时机","level":"1.2.6.2","depth":3,"path":"easy/DP/买卖股票的最佳时机.md","ref":"./easy/DP/买卖股票的最佳时机.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/DP/最大子序和.md","mtime":"2020-05-11T06:25:24.867Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-19T10:05:56.683Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"最大子序和","level":"1.2.6.3","depth":3,"next":{"title":"打家劫舍","level":"1.2.6.4","depth":3,"path":"easy/DP/打家劫舍.md","ref":"./easy/DP/打家劫舍.md","articles":[]},"previous":{"title":"买卖股票的最佳时机","level":"1.2.6.2","depth":3,"path":"easy/DP/买卖股票的最佳时机.md","ref":"./easy/DP/买卖股票的最佳时机.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/DP/最大子序和.md","mtime":"2020-06-01T09:36:24.140Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T08:32:35.757Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
