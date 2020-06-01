@@ -16,10 +16,20 @@
 // };
 
 var rob = function (nums) {
-
+    var len = nums.length;
+    if (len == 0) return 0
+    var sum = [] //记录
+    for (var i = 0; i < len; i++) {
+        if (i < 2) {
+            sum[i] = nums[i]
+        } else {
+            sum[i] = Math.max(...sum.slice(0, i - 1)) + nums[i]
+        }
+    }
+    return Math.max(...sum)
 };
 
-var src = [2, 1, 1, 2]
+var src = []
 var res = rob(src)
 
 console.log(res)
