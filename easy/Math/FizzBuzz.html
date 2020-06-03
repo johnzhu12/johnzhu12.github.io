@@ -1101,6 +1101,26 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="fizzbuzz"><a href="https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/25/math/60/" target="_blank">FizzBuzz</a></h1>
+<p><img src="imgs/fizzBuzz.png" alt="fizzBuzz"></p>
+<h2 id="&#x601D;&#x8DEF;">&#x601D;&#x8DEF;</h2>
+<h3 id="1&#x66B4;&#x529B;&#x89E3;&#x51B3;">1.&#x66B4;&#x529B;&#x89E3;&#x51B3;</h3>
+<p>&#x5FAA;&#x73AF;&#x5224;&#x65AD;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> fizzBuzz = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">n</span>) </span>{
+    <span class="hljs-keyword">var</span> ans = []
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {
+        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> != <span class="hljs-number">0</span> &amp;&amp; i % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>) { <span class="hljs-comment">//&#x4E0D;&#x662F;3&#x6216;&#x8005;5&#x7684;&#x500D;&#x6570;</span>
+            ans.push(<span class="hljs-string">`<span class="hljs-subst">${i}</span>`</span>)    <span class="hljs-comment">//&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#xFF0C;&#x4E00;&#x5F00;&#x59CB;&#x6CA1;&#x6CE8;&#x610F;&#x662F;&#x5B57;&#x7B26;&#x4E32;</span>
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> &amp;&amp; i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>) {<span class="hljs-comment">//&#x540C;&#x65F6;&#x662F;3&#x6216;&#x8005;5&#x7684;&#x500D;&#x6570;</span>
+            ans.push(<span class="hljs-string">&apos;FizzBuzz&apos;</span>)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> &amp;&amp; i % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>) {<span class="hljs-comment">//&#x53EA;&#x662F;3&#x7684;&#x500D;&#x6570;</span>
+            ans.push(<span class="hljs-string">&apos;Fizz&apos;</span>)
+        } <span class="hljs-keyword">else</span> {
+            ans.push(<span class="hljs-string">&apos;Buzz&apos;</span>)
+        }
+    }
+    <span class="hljs-keyword">return</span> ans;
+};
+</code></pre>
 
                                 
                                 </section>
@@ -1140,7 +1160,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"FizzBuzz","level":"1.2.8.1","depth":3,"next":{"title":"计数质数","level":"1.2.8.2","depth":3,"path":"easy/Math/计数质数.md","ref":"./easy/Math/计数质数.md","articles":[]},"previous":{"title":"数学","level":"1.2.8","depth":2,"ref":"","articles":[{"title":"FizzBuzz","level":"1.2.8.1","depth":3,"path":"easy/Math/FizzBuzz.md","ref":"./easy/Math/FizzBuzz.md","articles":[]},{"title":"计数质数","level":"1.2.8.2","depth":3,"path":"easy/Math/计数质数.md","ref":"./easy/Math/计数质数.md","articles":[]},{"title":"3的幂","level":"1.2.8.3","depth":3,"path":"easy/Math/3的幂.md","ref":"./easy/Math/3的幂.md","articles":[]},{"title":"罗马数字转整数","level":"1.2.8.4","depth":3,"path":"easy/Math/罗马数字转整数.md","ref":"./easy/Math/罗马数字转整数.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/Math/FizzBuzz.md","mtime":"2020-05-11T06:31:56.410Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T08:32:35.757Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"FizzBuzz","level":"1.2.8.1","depth":3,"next":{"title":"计数质数","level":"1.2.8.2","depth":3,"path":"easy/Math/计数质数.md","ref":"./easy/Math/计数质数.md","articles":[]},"previous":{"title":"数学","level":"1.2.8","depth":2,"ref":"","articles":[{"title":"FizzBuzz","level":"1.2.8.1","depth":3,"path":"easy/Math/FizzBuzz.md","ref":"./easy/Math/FizzBuzz.md","articles":[]},{"title":"计数质数","level":"1.2.8.2","depth":3,"path":"easy/Math/计数质数.md","ref":"./easy/Math/计数质数.md","articles":[]},{"title":"3的幂","level":"1.2.8.3","depth":3,"path":"easy/Math/3的幂.md","ref":"./easy/Math/3的幂.md","articles":[]},{"title":"罗马数字转整数","level":"1.2.8.4","depth":3,"path":"easy/Math/罗马数字转整数.md","ref":"./easy/Math/罗马数字转整数.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/Math/FizzBuzz.md","mtime":"2020-06-02T09:49:00.033Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T08:32:35.757Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

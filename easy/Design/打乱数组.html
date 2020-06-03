@@ -1101,6 +1101,100 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x6253;&#x4E71;&#x6570;&#x7EC4;"><a href="https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/24/design/58/" target="_blank">&#x6253;&#x4E71;&#x6570;&#x7EC4;</a></h1>
+<p><img src="imgs/shuffle.png" alt="shuffle"></p>
+<h2 id="&#x601D;&#x8DEF;">&#x601D;&#x8DEF;</h2>
+<p>&#x6D17;&#x724C;&#x7B97;&#x6CD5;&#x80FD;&#x4FDD;&#x8BC1;&#xFF0C;&#x5BF9;&#x4E8E;&#x751F;&#x6210;&#x7684;&#x6392;&#x5217;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x80FD;&#x7B49;&#x6982;&#x7387;&#x7684;&#x51FA;&#x73B0;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x4E3A;n&#xFF0C; &#x5148;&#x4ECE;n&#x4E2A;&#x6570;&#x636E;&#x4E2D;&#xFF0C;&#x968F;&#x673A;&#x9009;&#x53D6;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x4E0E;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4EA4;&#x6362;</p>
+<p>&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x88AB;&#x9009;&#x4E2D;&#x7684;&#x6982;&#x7387;&#x662F; 1/n</p>
+<p>&#x4ECE;&#x5269;&#x4E0B;&#x957F;&#x5EA6;&#x7684; n-1 &#x5143;&#x7D20;&#x4E2D;&#x968F;&#x4FBF;&#x53D6;&#x4E00;&#x4E2A;&#xFF0C;&#x4E0E;&#x5012;&#x6570;&#x7B2C;&#x4E8C;&#x4E2A;&#x5143;&#x7D20;&#x4EA4;&#x6362;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x6CA1;&#x6709;&#x88AB;&#x9009;&#x4E2D;&#x7684;&#x6982;&#x7387;&#x4E3A; n-1/n</p>
+<p>&#x7B2C;&#x4E8C;&#x6B21;&#x88AB;&#x9009;&#x4E2D;&#x7684;&#x6982;&#x7387;&#x4E3A; 1/n-1 , &#x6240;&#x4EE5;&#x6982;&#x7387;&#x4ECD;&#x7136;&#x662F; (n-1)/n * 1/(n-1) = 1/n</p>
+<p>&#x6240;&#x4EE5;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x51FA;&#x73B0;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x90FD;&#x662F; 1/n</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * @param {number[]} nums
+ */</span>
+<span class="hljs-keyword">var</span> Solution = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">this</span>.arr = nums;
+};
+
+<span class="hljs-comment">/**
+ * Resets the array to its original configuration and return it.
+ * @return {number[]}
+ */</span>
+Solution.prototype.reset = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.arr;
+};
+
+<span class="hljs-comment">/**
+ * Returns a random shuffling of the array.
+ * @return {number[]}
+ */</span>
+Solution.prototype.shuffle = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> nums = [...this.arr];
+    <span class="hljs-keyword">let</span> n = nums.length - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (n &gt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">let</span> index = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * (n + <span class="hljs-number">1</span>));
+        [nums[index], nums[n]] = [nums[n], nums[index]];
+        n--;
+    }
+    <span class="hljs-keyword">return</span> nums;
+};
+
+<span class="hljs-comment">/**
+ * Your Solution object will be instantiated and called as such:
+ * var obj = new Solution(nums)
+ * var param_1 = obj.reset()
+ * var param_2 = obj.shuffle()
+ */</span>
+
+
+<span class="hljs-comment">/**
+ * Your Solution object will be instantiated and called as such:
+ * var obj = new Solution(nums)
+ * var param_1 = obj.reset()
+ * var param_2 = obj.shuffle()
+ */</span>
+</code></pre>
+<p>&#x65B9;&#x6CD5;&#x4E8C;&#xFF0C;&#x987A;&#x5E8F;&#x6253;&#x4E71;</p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * @param {number[]} nums
+ */</span>
+<span class="hljs-keyword">var</span> Solution = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">this</span>.arr = nums;
+};
+
+<span class="hljs-comment">/**
+ * Resets the array to its original configuration and return it.
+ * @return {number[]}
+ */</span>
+Solution.prototype.reset = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.arr;
+};
+
+<span class="hljs-comment">/**
+ * Returns a random shuffling of the array.
+ * @return {number[]}
+ */</span>
+Solution.prototype.shuffle = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> nums = [...this.arr];
+    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRandom</span>(<span class="hljs-params">start, end</span>) </span>{
+        <span class="hljs-keyword">return</span>  <span class="hljs-built_in">parseInt</span>(start + <span class="hljs-built_in">Math</span>.random() * (end - start))
+    }
+    <span class="hljs-keyword">while</span>(i &lt; nums.length - <span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">let</span> index = getRandom(i, nums.length);
+        [nums[index], nums[i]] = [nums[i], nums[index]];
+        i++;
+    }
+    <span class="hljs-keyword">return</span> nums;
+};
+
+<span class="hljs-comment">/**
+ * Your Solution object will be instantiated and called as such:
+ * var obj = new Solution(nums)
+ * var param_1 = obj.reset()
+ * var param_2 = obj.shuffle()
+ */</span>
+</code></pre>
 
                                 
                                 </section>
@@ -1140,7 +1234,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"打乱数组","level":"1.2.7.1","depth":3,"next":{"title":"最小栈","level":"1.2.7.2","depth":3,"path":"easy/Design/最小栈.md","ref":"./easy/Design/最小栈.md","articles":[]},"previous":{"title":"设计问题","level":"1.2.7","depth":2,"ref":"","articles":[{"title":"打乱数组","level":"1.2.7.1","depth":3,"path":"easy/Design/打乱数组.md","ref":"./easy/Design/打乱数组.md","articles":[]},{"title":"最小栈","level":"1.2.7.2","depth":3,"path":"easy/Design/最小栈.md","ref":"./easy/Design/最小栈.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/Design/打乱数组.md","mtime":"2020-05-11T06:30:31.217Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T08:32:35.757Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"打乱数组","level":"1.2.7.1","depth":3,"next":{"title":"最小栈","level":"1.2.7.2","depth":3,"path":"easy/Design/最小栈.md","ref":"./easy/Design/最小栈.md","articles":[]},"previous":{"title":"设计问题","level":"1.2.7","depth":2,"ref":"","articles":[{"title":"打乱数组","level":"1.2.7.1","depth":3,"path":"easy/Design/打乱数组.md","ref":"./easy/Design/打乱数组.md","articles":[]},{"title":"最小栈","level":"1.2.7.2","depth":3,"path":"easy/Design/最小栈.md","ref":"./easy/Design/最小栈.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/Design/打乱数组.md","mtime":"2020-06-02T06:45:24.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T08:32:35.757Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

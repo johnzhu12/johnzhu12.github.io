@@ -1122,21 +1122,19 @@
 <p>&#x8FD9;&#x9898;&#x5728;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x91CC;&#xFF0C;&#x8BD5;&#x8BD5;&#x5148;&#x7528;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x601D;&#x8003;</p>
 <h3 id="dp">DP</h3>
 <ol>
-<li>&#x601D;&#x8003;&#x72B6;&#x6001;</li>
+<li><p>&#x601D;&#x8003;&#x72B6;&#x6001;</p>
+<p> &#x5047;&#x8BBE;s(i)&#x4E3A;&#x4EE5;&#x7B2C;i&#x4E2A;&#x6570;&#x4E3A;&#x7ED3;&#x5C3E;&#x7684;&#x6700;&#x5927;&#x548C;&#x3002;</p>
+</li>
+<li><p>&#x72B6;&#x6001;&#x8F6C;&#x79FB;&#x65B9;&#x7A0B;</p>
+<p> s(i) = max(s(0)...s(i-2))+ nums[i]</p>
+</li>
+<li><p>&#x601D;&#x8003;&#x521D;&#x59CB;&#x5316;</p>
+<p> s(0) = nums[0]</p>
+</li>
+<li><p>&#x601D;&#x8003;&#x8F93;&#x51FA;</p>
+<p> max(s)</p>
+</li>
 </ol>
-<p>&#x5047;&#x8BBE;s(i)&#x4E3A;&#x4EE5;&#x7B2C;i&#x4E2A;&#x6570;&#x4E3A;&#x7ED3;&#x5C3E;&#x7684;&#x6700;&#x5927;&#x548C;&#x3002;</p>
-<ol>
-<li>&#x72B6;&#x6001;&#x8F6C;&#x79FB;&#x65B9;&#x7A0B;</li>
-</ol>
-<p>s(i) = max(s(0)...s(i-2))+ nums[i]</p>
-<ol>
-<li>&#x601D;&#x8003;&#x521D;&#x59CB;&#x5316;</li>
-</ol>
-<p>s(0) = nums[0]</p>
-<ol>
-<li>&#x601D;&#x8003;&#x8F93;&#x51FA;</li>
-</ol>
-<p>max(s)</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> rob = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">nums</span>) </span>{
     <span class="hljs-keyword">var</span> len = nums.length;
     <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
@@ -1190,7 +1188,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"打家劫舍","level":"1.2.6.4","depth":3,"next":{"title":"设计问题","level":"1.2.7","depth":2,"ref":"","articles":[{"title":"打乱数组","level":"1.2.7.1","depth":3,"path":"easy/Design/打乱数组.md","ref":"./easy/Design/打乱数组.md","articles":[]},{"title":"最小栈","level":"1.2.7.2","depth":3,"path":"easy/Design/最小栈.md","ref":"./easy/Design/最小栈.md","articles":[]}]},"previous":{"title":"最大子序和","level":"1.2.6.3","depth":3,"path":"easy/DP/最大子序和.md","ref":"./easy/DP/最大子序和.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/DP/打家劫舍.md","mtime":"2020-06-01T10:34:08.004Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T08:32:35.757Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"打家劫舍","level":"1.2.6.4","depth":3,"next":{"title":"设计问题","level":"1.2.7","depth":2,"ref":"","articles":[{"title":"打乱数组","level":"1.2.7.1","depth":3,"path":"easy/Design/打乱数组.md","ref":"./easy/Design/打乱数组.md","articles":[]},{"title":"最小栈","level":"1.2.7.2","depth":3,"path":"easy/Design/最小栈.md","ref":"./easy/Design/最小栈.md","articles":[]}]},"previous":{"title":"最大子序和","level":"1.2.6.3","depth":3,"path":"easy/DP/最大子序和.md","ref":"./easy/DP/最大子序和.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"easy/DP/打家劫舍.md","mtime":"2020-06-02T06:18:06.135Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T08:32:35.757Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
