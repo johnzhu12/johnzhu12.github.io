@@ -1142,9 +1142,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.3.1" data-path="../Tree&Graph/中序遍历二叉树.md">
+        <li class="chapter " data-level="2.1.3.1" data-path="../Tree&Graph/中序遍历二叉树.html">
             
-                <span>
+                <a href="../Tree&Graph/中序遍历二叉树.html">
             
                     
                     中序遍历二叉树
@@ -1155,9 +1155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.2" data-path="../Tree&Graph/二叉树的锯齿形层次遍历.md">
+        <li class="chapter " data-level="2.1.3.2" data-path="../Tree&Graph/二叉树的锯齿形层次遍历.html">
             
-                <span>
+                <a href="../Tree&Graph/二叉树的锯齿形层次遍历.html">
             
                     
                     二叉树的锯齿形层次遍历
@@ -1168,9 +1168,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.3" data-path="../Tree&Graph/从前序与中序遍历序列构造二叉树.md">
+        <li class="chapter " data-level="2.1.3.3" data-path="../Tree&Graph/从前序与中序遍历序列构造二叉树.html">
             
-                <span>
+                <a href="../Tree&Graph/从前序与中序遍历序列构造二叉树.html">
             
                     
                     从前序与中序遍历序列构造二叉树
@@ -1181,9 +1181,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.4" data-path="../Tree&Graph/填充每个节点的下一个右侧节点指针.md">
+        <li class="chapter " data-level="2.1.3.4" data-path="../Tree&Graph/填充每个节点的下一个右侧节点指针.html">
             
-                <span>
+                <a href="../Tree&Graph/填充每个节点的下一个右侧节点指针.html">
             
                     
                     填充每个节点的下一个右侧节点指针
@@ -1194,9 +1194,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.5" data-path="../Tree&Graph/二叉搜索树中第K小的元素.md">
+        <li class="chapter " data-level="2.1.3.5" data-path="../Tree&Graph/二叉搜索树中第K小的元素.html">
             
-                <span>
+                <a href="../Tree&Graph/二叉搜索树中第K小的元素.html">
             
                     
                     二叉搜索树中第K小的元素
@@ -1207,9 +1207,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3.6" data-path="../Tree&Graph/岛屿数量.md">
+        <li class="chapter " data-level="2.1.3.6" data-path="../Tree&Graph/numIslands.html">
             
-                <span>
+                <a href="../Tree&Graph/numIslands.html">
             
                     
                     岛屿数量
@@ -1912,7 +1912,30 @@
 };
 </code></pre>
 <h3 id="2-dp&#x89E3;&#x6CD5;">2. DP&#x89E3;&#x6CD5;</h3>
+<p>&#x548C;LIS&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x8981;&#x8BA1;&#x7B97;&#x4E86;LIS&#x957F;&#x5EA6;&#x4E3A;3&#x5C31;&#x53EF;&#x4EE5;&#x4E86;</p>
 <p><a href="https://leetcode-cn.com/problems/increasing-triplet-subsequence/solution/dong-tai-gui-hua-qiu-zui-chang-di-zeng-zi-xu-lie-d/" target="_blank">&#x9898;&#x89E3;</a></p>
+<pre><code class="lang-js"><span class="hljs-comment">/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */</span>
+<span class="hljs-keyword">var</span> increasingTriplet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums</span>) </span>{
+    <span class="hljs-keyword">let</span> longest = [], count;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) {
+        count = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; longest.length; j++) {
+            <span class="hljs-keyword">if</span>(nums[i] &gt; nums[j] &amp;&amp; count &lt;= longest[j]) {
+                count = longest[j] + <span class="hljs-number">1</span>;
+            }
+        }
+        longest.push(count);
+
+        <span class="hljs-keyword">if</span>(count &gt;= <span class="hljs-number">3</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+};
+</code></pre>
 
                                 
                                 </section>
@@ -1952,7 +1975,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"递增的三元子序列","level":"2.1.1.6","depth":3,"next":{"title":"链表","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"两数相加","level":"2.1.2.1","depth":3,"path":"normal/LinkedList/两数相加.md","ref":"./normal/LinkedList/两数相加.md","articles":[]},{"title":"奇偶链表","level":"2.1.2.2","depth":3,"path":"normal/LinkedList/奇偶链表.md","ref":"./normal/LinkedList/奇偶链表.md","articles":[]},{"title":"相交链表","level":"2.1.2.3","depth":3,"path":"normal/LinkedList/相交链表.md","ref":"./normal/LinkedList/相交链表.md","articles":[]}]},"previous":{"title":"最长回文子串","level":"2.1.1.5","depth":3,"path":"normal/Array&String/最长回文子串.md","ref":"./normal/Array&String/最长回文子串.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"normal/Array&String/递增的三元子序列.md","mtime":"2020-06-15T07:58:28.652Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-09T06:34:08.588Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"递增的三元子序列","level":"2.1.1.6","depth":3,"next":{"title":"链表","level":"2.1.2","depth":2,"ref":"","articles":[{"title":"两数相加","level":"2.1.2.1","depth":3,"path":"normal/LinkedList/两数相加.md","ref":"./normal/LinkedList/两数相加.md","articles":[]},{"title":"奇偶链表","level":"2.1.2.2","depth":3,"path":"normal/LinkedList/奇偶链表.md","ref":"./normal/LinkedList/奇偶链表.md","articles":[]},{"title":"相交链表","level":"2.1.2.3","depth":3,"path":"normal/LinkedList/相交链表.md","ref":"./normal/LinkedList/相交链表.md","articles":[]}]},"previous":{"title":"最长回文子串","level":"2.1.1.5","depth":3,"path":"normal/Array&String/最长回文子串.md","ref":"./normal/Array&String/最长回文子串.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"normal/Array&String/递增的三元子序列.md","mtime":"2020-06-23T06:42:30.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-23T06:34:32.892Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
