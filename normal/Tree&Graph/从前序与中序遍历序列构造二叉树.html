@@ -1487,9 +1487,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.6.4" data-path="../DP/LIS.md">
+        <li class="chapter " data-level="2.1.6.4" data-path="../DP/LIS.html">
             
-                <span>
+                <a href="../DP/LIS.html">
             
                     
                     LIS
@@ -1887,6 +1887,83 @@
                                 <h1 id="&#x4ECE;&#x524D;&#x5E8F;&#x4E0E;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#x5E8F;&#x5217;&#x6784;&#x9020;&#x4E8C;&#x53C9;&#x6811;"><a href="https://leetcode-cn.com/explore/interview/card/top-interview-questions-medium/32/trees-and-graphs/87/" target="_blank">&#x4ECE;&#x524D;&#x5E8F;&#x4E0E;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#x5E8F;&#x5217;&#x6784;&#x9020;&#x4E8C;&#x53C9;&#x6811;</a></h1>
 <p><img src="imgs/buildTree.png" alt="buildTree"></p>
 <h2 id="&#x601D;&#x8DEF;">&#x601D;&#x8DEF;</h2>
+<p>&#x4E2D;&#x7EA7;&#x7684;&#x5934;&#x6709;&#x70B9;&#x75BC;&#x4E86;&#xFF0C;<a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/ding-wei-chu-gen-jie-dian-de-wei-zhi-hua-fen-zuo-y/" target="_blank">&#x9898;&#x89E3;</a></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> buildTree = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">preorder, inorder</span>) </span>{
+  <span class="hljs-keyword">if</span> (inorder.length === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">let</span> root = <span class="hljs-keyword">new</span> TreeNode(preorder[<span class="hljs-number">0</span>]) 
+  <span class="hljs-keyword">let</span> mid = inorder.indexOf(preorder[<span class="hljs-number">0</span>]) 
+  root.left = buildTree(preorder.slice(<span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>), inorder.slice(<span class="hljs-number">0</span>, mid)) 
+  root.right = buildTree(preorder.slice(mid + <span class="hljs-number">1</span>), inorder.slice(mid + <span class="hljs-number">1</span>))
+  <span class="hljs-keyword">return</span> root
+};
+</code></pre>
+<ul>
+<li>&#x5B57;&#x7B26;&#x4E32;&#x622A;&#x53D6; slice &#x6027;&#x80FD;&#x6D88;&#x8017;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x6CA1;&#x5FC5;&#x8981;&#x628A; preorder &#x548C; inorder &#x6570;&#x7EC4;&#x771F;&#x7684;&#x5207;&#x5272;&#x51FA;&#x6765;</li>
+<li>&#x7528;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x8868;&#x793A;&#x5373;&#x53EF;&#x3002;&#x5199;&#x4E00;&#x4E2A; helper &#x51FD;&#x6570;&#xFF0C;&#x63A5;&#x6536;2&#x5BF9;&#x6307;&#x9488;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> buildTree = (preorder, inorder) =&gt; {
+  <span class="hljs-keyword">return</span> helper(preorder, <span class="hljs-number">0</span>, preorder.length - <span class="hljs-number">1</span>, inorder, <span class="hljs-number">0</span>, inorder.length - <span class="hljs-number">1</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">helper</span>(<span class="hljs-params">preorder, p_start, p_end, inorder, i_start, i_end</span>) </span>{
+  <span class="hljs-keyword">if</span> (p_start &gt; p_end) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span> <span class="hljs-comment">// preorder&#x4E3A;&#x7A7A;</span>
+  <span class="hljs-keyword">let</span> rootVal = preorder[p_start] <span class="hljs-comment">// &#x6839;&#x8282;&#x70B9;&#x7684;&#x503C;</span>
+  <span class="hljs-keyword">let</span> root = <span class="hljs-keyword">new</span> TreeNode(rootVal) <span class="hljs-comment">// &#x6839;&#x8282;&#x70B9;</span>
+  <span class="hljs-keyword">let</span> mid = inorder.indexOf(rootVal) <span class="hljs-comment">// &#x6839;&#x8282;&#x70B9;&#x5728;inorder&#x7684;&#x4F4D;&#x7F6E;</span>
+  <span class="hljs-keyword">let</span> leftNum = mid - i_start <span class="hljs-comment">// &#x5DE6;&#x5B50;&#x6811;&#x7684;&#x8282;&#x70B9;&#x6570;</span>
+
+  root.left = helper(preorder, p_start + <span class="hljs-number">1</span>, p_start + leftNum, inorder, i_start, mid - <span class="hljs-number">1</span>)
+  root.right = helper(preorder, p_start + leftNum + <span class="hljs-number">1</span>, p_end, inorder, mid + <span class="hljs-number">1</span>, i_end)
+  <span class="hljs-keyword">return</span> root
+}
+</code></pre>
+<ul>
+<li>&#x6BCF;&#x6B21;&#x9012;&#x5F52;&#x90FD;&#x8981;&#x5728; inorder &#x6570;&#x7EC4;&#x4E2D;&#x5BFB;&#x627E;&#x6839;&#x8282;&#x70B9;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x8017;&#x8D39;&#x6027;&#x80FD;</li>
+<li>&#x63D0;&#x524D;&#x628A; inorder &#x6570;&#x7EC4;&#x7684;&#x9879;&#x548C;&#x7D22;&#x5F15;&#x5B58;&#x50A8;&#x5728; HashMap &#x3002;&#x67E5;&#x8BE2;&#x54C8;&#x5E0C;&#x8868;&#x6BD4;&#x8F83;&#x8282;&#x7701;&#x6027;&#x80FD;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> buildTree = (preorder, inorder) =&gt; {
+  <span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; inorder.length; i++) {
+    map.set(inorder[i], i)
+  }
+  <span class="hljs-keyword">return</span> helper(preorder, <span class="hljs-number">0</span>, preorder.length - <span class="hljs-number">1</span>, inorder, <span class="hljs-number">0</span>, inorder.length - <span class="hljs-number">1</span>, map)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">helper</span>(<span class="hljs-params">preorder, p_start, p_end, inorder, i_start, i_end, map</span>) </span>{
+  <span class="hljs-keyword">if</span> (p_start &gt; p_end) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span> <span class="hljs-comment">// preorder&#x4E3A;&#x7A7A;</span>
+  <span class="hljs-keyword">let</span> rootVal = preorder[p_start] <span class="hljs-comment">// &#x6839;&#x8282;&#x70B9;&#x7684;&#x503C;</span>
+  <span class="hljs-keyword">let</span> root = <span class="hljs-keyword">new</span> TreeNode(rootVal) <span class="hljs-comment">// &#x6839;&#x8282;&#x70B9;</span>
+  <span class="hljs-keyword">let</span> mid = map.get(rootVal) <span class="hljs-comment">// &#x6839;&#x8282;&#x70B9;&#x5728;inorder&#x7684;&#x4F4D;&#x7F6E;</span>
+  <span class="hljs-keyword">let</span> leftNum = mid - i_start <span class="hljs-comment">// &#x5DE6;&#x5B50;&#x6811;&#x7684;&#x8282;&#x70B9;&#x6570;</span>
+
+  root.left = helper(preorder, p_start + <span class="hljs-number">1</span>, p_start + leftNum, inorder, i_start, mid - <span class="hljs-number">1</span>, map)
+  root.right = helper(preorder, p_start + leftNum + <span class="hljs-number">1</span>, p_end, inorder, mid + <span class="hljs-number">1</span>, i_end, map)
+  <span class="hljs-keyword">return</span> root
+}
+</code></pre>
+<h3 id="&#x9644;&#x52A0;">&#x9644;&#x52A0;</h3>
+<p>&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5DE7;&#x5999;&#x7684;&#x65B9;&#x6CD5;</p>
+<ul>
+<li>&#x53D8;&#x91CF; pre &#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x8981;&#x6784;&#x9020;&#x7684;&#x6811;&#x7684; root</li>
+<li>&#x53D8;&#x91CF; in &#x4FDD;&#x5B58; inorder &#x6570;&#x7EC4;&#x4E2D;&#x53EF;&#x4EE5;&#x6210;&#x4E3A; root &#x7684;&#x6570;&#x5B57;&#x4EEC;&#x7684;&#x5F00;&#x5934;&#x90A3;&#x4E2A;</li>
+<li>&#x5BF9;&#x4E8E;&#x5F53;&#x524D;&#x8981;&#x6784;&#x9020;&#x7684;&#x6811;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x505C;&#x6B62;&#x70B9; stop &#xFF0C;inorder &#x6570;&#x7EC4;&#x4E2D;&#x7B2C; in &#x9879;&#x5230;&#x7B2C; stop &#x9879;&#x662F;&#x8981;&#x6784;&#x9020;&#x7684;&#x6811;&#x7684;&#x8282;&#x70B9;&#x503C;&#x4EEC;</li>
+<li>&#x6BCF;&#x6B21;&#x9012;&#x5F52;&#x8C03;&#x7528;&#xFF0C;&#x90FD;&#x4F1A;&#x786E;&#x5B9A;&#x51FA;&#x4E00;&#x4E2A;&#x505C;&#x6B62;&#x70B9;&#xFF0C;&#x5B83;&#x544A;&#x8BC9;&#x4E86;&#x5B50;&#x8C03;&#x7528;&#x5728;&#x54EA;&#x91CC;&#x505C;&#x6B62;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x6839;&#x8282;&#x70B9;&#x503C;&#x4F5C;&#x4E3A;&#x5DE6;&#x5B50;&#x6811;&#x8C03;&#x7528;&#x7684;&#x505C;&#x6B62;&#x70B9;&#xFF0C;&#x81EA;&#x5DF1;&#x7684;&#xFF08;&#x7236;&#x8C03;&#x7528;&#x7ED9;&#x4E0B;&#x6765;&#x7684;&#xFF09;&#x505C;&#x6B62;&#x70B9;&#x4F5C;&#x4E3A;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x505C;&#x6B62;&#x70B9;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> buildTree = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">preorder, inorder</span>) </span>{
+    pre = i = <span class="hljs-number">0</span>
+    build = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">stop</span>) </span>{
+        <span class="hljs-keyword">if</span> (inorder[i] != stop) {
+            <span class="hljs-keyword">var</span> root = <span class="hljs-keyword">new</span> TreeNode(preorder[pre++])
+            root.left = build(root.val)
+            i++
+            root.right = build(stop)
+            <span class="hljs-keyword">return</span> root
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>
+    }
+    <span class="hljs-keyword">return</span> build()
+};
+</code></pre>
 
                                 
                                 </section>
@@ -1930,7 +2007,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"从前序与中序遍历序列构造二叉树","level":"2.1.3.3","depth":3,"next":{"title":"填充每个节点的下一个右侧节点指针","level":"2.1.3.4","depth":3,"path":"normal/Tree&Graph/填充每个节点的下一个右侧节点指针.md","ref":"./normal/Tree&Graph/填充每个节点的下一个右侧节点指针.md","articles":[]},"previous":{"title":"二叉树的锯齿形层次遍历","level":"2.1.3.2","depth":3,"path":"normal/Tree&Graph/二叉树的锯齿形层次遍历.md","ref":"./normal/Tree&Graph/二叉树的锯齿形层次遍历.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"normal/Tree&Graph/从前序与中序遍历序列构造二叉树.md","mtime":"2020-06-29T10:29:14.268Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-23T06:34:32.892Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"从前序与中序遍历序列构造二叉树","level":"2.1.3.3","depth":3,"next":{"title":"填充每个节点的下一个右侧节点指针","level":"2.1.3.4","depth":3,"path":"normal/Tree&Graph/填充每个节点的下一个右侧节点指针.md","ref":"./normal/Tree&Graph/填充每个节点的下一个右侧节点指针.md","articles":[]},"previous":{"title":"二叉树的锯齿形层次遍历","level":"2.1.3.2","depth":3,"path":"normal/Tree&Graph/二叉树的锯齿形层次遍历.md","ref":"./normal/Tree&Graph/二叉树的锯齿形层次遍历.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","disqus","multipart","livereload"],"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"leetcodesourcejs"},"livereload":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"normal/Tree&Graph/从前序与中序遍历序列构造二叉树.md","mtime":"2020-07-13T07:21:19.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-08T02:12:22.870Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
